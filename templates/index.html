@@ -1,17 +1,26 @@
 {% extends "base.html" %} {% block content %}
 
+<head>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <py-env>
+        - imageai
+    </py-env>
+</head>
 <h2>Upload Traffic Signs🚦</h2>
-<style> .footer {
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   background-color: #2dcba7;
-   color: black;
-   text-align: center;
-   font-size: 25px;
-   font-weight: bold;
-}</style>
+<style>
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #2dcba7;
+        color: black;
+        text-align: center;
+        font-size: 25px;
+        font-weight: bold;
+    }
+</style>
 
 <div>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,6 +51,16 @@
         <span> </span>
     </h3>
 
+</div>
+
+<div>
+    <py-script>
+        from imageai import Detection
+        yolo = Detection.ObjectDetection()
+        yolo.setModelTypeAsYOLOv3()
+        yolo.setModelPath(modelpath)
+        yolo.loadModel()
+    </py-script>
 </div>
 
 {% endblock %}
