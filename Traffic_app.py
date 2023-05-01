@@ -1,6 +1,5 @@
 from flask import *
 import os
-# import cv2
 from werkzeug.utils import secure_filename
 from keras.models import load_model
 import numpy as np
@@ -64,9 +63,6 @@ def image_processing(img):
     # Y_pred = (model.predict(X_test) > 0.5).astype("int32")
     Y_pred = np.argmax(model.predict(X_test), axis=1)
     return Y_pred
-# def video_processing(vid):
-#     video = cv2.VideoCapture(vid)
-#     frame = cv2.resize(frame, (30, 30), fx = 0, fy = 0,interpolation = cv2.INTER_CUBIC)
 
 @app.route('/')
 def index():
@@ -81,7 +77,6 @@ def upload():
         f.save(file_path)
         # Make prediction
         result = image_processing(file_path)
-        # result = video_processing(file_path)
         s = [str(i) for i in result]
         a = int("".join(s))
         result = "Predicted Traffic🚦Sign is: " +classes[a]

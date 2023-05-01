@@ -1,12 +1,6 @@
 {% extends "base.html" %} {% block content %}
 
-<head>
-    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
-    <py-env>
-        - imageai
-    </py-env>
-</head>
+
 <h2>Upload Traffic Signs🚦</h2>
 <style>
     .footer {
@@ -29,10 +23,6 @@
             Upload Image File...
         </label>
         <input type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg">
-        <label for="videoUpload" class="upload-label">
-            Upload Video File...
-        </label>
-        <input type="file" name="file" id="videoUpload" accept=".mp4, .mkv">
     </form>
 
     <div class="image-section" style="display:none;">
@@ -51,16 +41,6 @@
         <span> </span>
     </h3>
 
-</div>
-
-<div>
-    <py-script>
-        from imageai import Detection
-        yolo = Detection.ObjectDetection()
-        yolo.setModelTypeAsYOLOv3()
-        yolo.setModelPath(modelpath)
-        yolo.loadModel()
-    </py-script>
 </div>
 
 {% endblock %}
