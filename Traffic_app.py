@@ -59,8 +59,6 @@ def image_processing(img):
     image = image.resize((30,30))
     data.append(np.array(image))
     X_test=np.array(data)
-    # Y_pred = model.predict_classes(X_test)
-    # Y_pred = (model.predict(X_test) > 0.5).astype("int32")
     Y_pred = np.argmax(model.predict(X_test), axis=1)
     return Y_pred
 
